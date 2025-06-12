@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-// Update the import path below to the correct relative path where ApplyMuiTheme exists, for example:
-import ApplyMuiTheme from "../HOC/ApplyMuiTheme";
+import ApplyMuiTheme from "../components/HOC/ApplyMuiTheme";
+import Navbar from "../components/Navbar/Navbar";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -29,8 +29,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ApplyMuiTheme>
-
-       {children}
+          <Navbar>{children}</Navbar>
         </ApplyMuiTheme>
       </body>
     </html>
