@@ -1,8 +1,8 @@
-const cameras = () => {
- 
+import CameraCard from '../../components/cameras/CameraCard';
+const Cameras = () => {
  return (
-      <h1>cam</h1>
+      <CameraCard />
  )
 
 }
-export default cameras;
+export default Cameras;
