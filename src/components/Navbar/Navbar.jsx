@@ -5,15 +5,10 @@ import {
   Toolbar,
   Typography,
   Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   Box,
   CssBaseline,
 } from "@mui/material";
-import { Home, Info, ContactPage } from "@mui/icons-material";
-import Link from "next/link";
+import ContentNav from "./ContentNav";
 
 const drawerWidth = 240;
 
@@ -34,35 +29,8 @@ const Navbar = ({ children }) => {
           },
         }}
       >
-        <Toolbar />
-        <Box sx={{ overflow: "auto" }}>
-          <List>
-            <Link href="/">
-              <ListItem  >
-                <ListItemIcon>
-                  <Home />
-                </ListItemIcon>
-                <ListItemText primary="Home" />
-              </ListItem>
-            </Link>
-            <Link href="/about">
-              <ListItem  >
-                <ListItemIcon>
-                  <Info />
-                </ListItemIcon>
-                <ListItemText primary="About" />
-              </ListItem>
-            </Link>
-            <Link href="/contact">
-              <ListItem  >
-                <ListItemIcon>
-                  <ContactPage />
-                </ListItemIcon>
-                <ListItemText primary="Contact" />
-              </ListItem>
-            </Link>
-          </List>
-        </Box>
+      
+      <ContentNav />
       </Drawer>
 
       {/* Main Content */}
