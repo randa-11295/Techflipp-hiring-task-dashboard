@@ -1,9 +1,10 @@
-"use client";
-import { Button } from "@mui/material";
+// "use client";
+// import { Button } from "@mui/material";
 export default function Home() {
   return (
       <div>
-        <Button variant="contained">Contained</Button>
+        test
+        {/* <Button variant="contained">Contained</Button> */}
       </div>
   );
 }

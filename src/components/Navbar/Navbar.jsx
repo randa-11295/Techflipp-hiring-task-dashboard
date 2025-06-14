@@ -38,7 +38,7 @@ const Navbar = ({ children }) => {
         <Box sx={{ overflow: "auto" }}>
           <List>
             <Link href="/">
-              <ListItem button component="a">
+              <ListItem  >
                 <ListItemIcon>
                   <Home />
                 </ListItemIcon>
@@ -46,7 +46,7 @@ const Navbar = ({ children }) => {
               </ListItem>
             </Link>
             <Link href="/about">
-              <ListItem button component="a">
+              <ListItem  >
                 <ListItemIcon>
                   <Info />
                 </ListItemIcon>
@@ -54,7 +54,7 @@ const Navbar = ({ children }) => {
               </ListItem>
             </Link>
             <Link href="/contact">
-              <ListItem button component="a">
+              <ListItem  >
                 <ListItemIcon>
                   <ContactPage />
                 </ListItemIcon>
