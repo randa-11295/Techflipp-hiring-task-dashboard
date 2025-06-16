@@ -35,23 +35,19 @@ const Cameras = () => {
     keepPreviousData: true,
   });
 
-  // Reset to page 1 when size or search changes
   useEffect(() => {
     setPage(1);
   }, [size, searchQuery]);
 
-  // Handle search input change
   const handleSearchChange = (event) => {
     setCameraName(event.target.value);
   };
 
-  // Handle search form submission
   const handleSearchSubmit = (event) => {
     event.preventDefault();
     setSearchQuery(cameraName.trim());
   };
 
-  // Handle pressing Enter key in the search field
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -59,76 +55,78 @@ const Cameras = () => {
     }
   };
 
-  // Handle pagination page change
   const handlePageChange = (_event, newPage) => {
     setPage(newPage);
   };
 
-  // Handle page size change
   const handlePageSizeChange = (event) => {
     setSize(parseInt(event.target.value, 10));
   };
 
   return (
-    <Box sx={{ padding: 2 }}>
-      {/* Filters Section */}
+    <Box sx={{ pb: 2 }}>
       <Box
         component="form"
         onSubmit={handleSearchSubmit}
         display="flex"
         flexDirection={{ xs: "column", sm: "row" }}
         gap={2}
-        alignItems="center"
+        alignItems="center"  
         mb={3}
       >
-        <FormControl sx={{ minWidth: 300 }} variant="outlined">
+        <Box sx={{flexGrow : 1 , }}>
           <InputLabel htmlFor="camera-search">Search</InputLabel>
-          <OutlinedInput
-            id="camera-search"
-            value={cameraName}
-            onChange={handleSearchChange}
-            onKeyPress={handleKeyPress}
-            label="Search"
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton type="submit" edge="end">
-                  <SendIcon />
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-        </FormControl>
+          <FormControl sx={{ minWidth: "100%" }} variant="outlined">
+            <OutlinedInput
+              id="camera-search"
+              value={cameraName}
+              onChange={handleSearchChange}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    type="submit"
+                    edge="end"
+                    sx={{ color: "primary.main" }}
+                  >
+                    <SendIcon />
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
+        </Box>
 
-        <TextField
-          label="Items per page"
-          variant="outlined"
-          select
-          value={size}
-          onChange={handlePageSizeChange}
-        >
-          {pageSizes.map((option) => (
-            <MenuItem key={option} value={option}>
-              {option}
-            </MenuItem>
-          ))}
-        </TextField>
+        <Box sx={{width : {xs : "100%" ,md: "30%"} }}>
+          <InputLabel htmlFor="page-size">Items per page</InputLabel>
+
+          <TextField
+            fullWidth
+            variant="outlined"
+            select
+            id="page-size"
+            value={size}
+            onChange={handlePageSizeChange}
+          >
+            {pageSizes.map((option) => (
+              <MenuItem key={option} value={option}>
+                {option}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Box>
       </Box>
-
-      {/* Loading Indicator */}
       {isLoading && (
         <Box display="flex" justifyContent="center" mt={4}>
           <CircularProgress />
         </Box>
       )}
 
-      {/* Error State */}
       {error && (
         <Typography color="error" textAlign="center" mt={4}>
           Something went wrong: {error.message}
         </Typography>
       )}
 
-      {/* Data Display */}
       {!isLoading && !error && (
         <>
           {data?.items?.length > 0 ? (
