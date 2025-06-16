@@ -2,14 +2,20 @@
 
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Pagination, CircularProgress, Box, Typography } from "@mui/material";
+import {
+  Pagination,
+  CircularProgress,
+  Box,
+  Typography,
+  Stack,
+} from "@mui/material";
 import CameraCard from "../../components/cameras/CameraCard";
 import { fetchCameras } from "../../api/fetchCameras";
 
 const Cameras = () => {
-  const [page, setPage] = useState(1); // MUI's Pagination is 1-based
-  const size = 6; 
-  const camera_name = ""; // Optional: you can wire this up to a filter input
+  const [page, setPage] = useState(1);
+  const size = 6;
+  const camera_name = "";
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["cameras", page, size, camera_name],
@@ -39,13 +45,20 @@ const Cameras = () => {
         <>
           {data?.items?.length > 0 ? (
             <>
-              {data.items.map((camera) => (
-                <CameraCard key={camera.id} camera={camera} />
-              ))}
+              <Stack
+                direction="row"
+                flexWrap="wrap"
+                justifyContent="space-between"
+                gap={3}
+              >
+                {data.items.map((camera) => (
+                  <CameraCard  key={camera.id} camera={camera} />
+                ))}
+              </Stack>
 
               <Box display="flex" justifyContent="center" mt={4}>
                 <Pagination
-                  count={Math.ceil((data.total || 0) / size)} 
+                  count={Math.ceil((data.total || 0) / size)}
                   page={page}
                   onChange={handlePageChange}
                   color="primary"

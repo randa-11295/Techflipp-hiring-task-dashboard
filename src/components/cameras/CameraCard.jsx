@@ -75,8 +75,7 @@ const CameraCard = () => {
   };
 
   return (
-    <Box sx={{ width: "45%", p: 2 }}>
-      <Card elevation={3} sx={{ borderRadius: 2 }}>
+      <Card elevation={3} sx={{ borderRadius: 2  , width :{ md: "48%" , lg : "31%"}}}>
         <CardMedia
           component="img"
           height="200"
@@ -84,11 +83,11 @@ const CameraCard = () => {
           alt={cameraData.name}
         />
 
-        <CardContent sx={{ p: 3 }}>
+        <CardContent sx={{ p: 2 }}>
           {/* Header */}
-          <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+          <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
             <Box sx={{ flexGrow: 1 }}>
-              <Typography variant="h5" sx={{ fontWeight: 600, mb: 0.5 }}>
+              <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5 }}>
                 {cameraData.name}
               </Typography>
             </Box>
@@ -111,7 +110,7 @@ const CameraCard = () => {
 
           {/* Status Message */}
           {cameraData.status_message && (
-            <Box sx={{ mb: 2 }}>
+            <Box sx={{ mb: 1}}>
               <Typography
                 variant="body2"
                 color="error.main"
@@ -122,33 +121,34 @@ const CameraCard = () => {
             </Box>
           )}
 
-          <Divider sx={{ my: 2 }} />
+          <Divider sx={{ my: 1 }} />
 
           {/* All Tags */}
-          <Box sx={{ mb: 2 }}>
+          <Box sx={{ mb: 1 }}>
             <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 600 }}>
               Tags
             </Typography>
-            <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+            <Stack direction="row" spacing={.5} flexWrap="wrap" useFlexGap>
               {cameraData.tags.map((tag) => (
                 <Chip
                   key={tag.id}
+                  size="small"
                   label={tag.name}
                   sx={{
                     backgroundColor: tag.color,
                     color: "black",
                     fontWeight: 500,
-                    mb: 1,
+                    mb: .5,
                   }}
                 />
               ))}
             </Stack>
           </Box>
 
-          <Divider sx={{ my: 2 }} />
+          <Divider sx={{ my: 1 }} />
 
           {/* RTSP URL */}
-          <Box sx={{ mb: 2 }}>
+          <Box sx={{ mb: 1 }}>
             <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 600 }}>
               RTSP Stream URL
             </Typography>
@@ -175,10 +175,10 @@ const CameraCard = () => {
             </Box>
           </Box>
 
-          <Divider sx={{ my: 2 }} />
+          <Divider sx={{ my: 1 }} />
 
           {/* Timestamps */}
-          <Box sx={{ mb: 2 }}>
+          <Box sx={{ mb: 1 }}>
             <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 600 }}>
               Timestamps
             </Typography>
@@ -194,7 +194,6 @@ const CameraCard = () => {
           </Box>
         </CardContent>
       </Card>
-    </Box>
   );
 };
 
