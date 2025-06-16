@@ -12,60 +12,9 @@ import {
 } from "@mui/material";
 import { Circle, ContentCopy } from "@mui/icons-material";
 
-const cameraData = {
-  id: "c0ef9548-0f37-45be-883d-05502cbc3671",
-  name: "Highway Crossing 3",
-  rtsp_url: "rtsp://camera-1.local:554/stream",
-  tags: [
-    {
-      id: "5b05ee86-68c2-48c0-9d3c-2a4208158f6c",
-      name: "gate",
-      color: "#96CEB4",
-    },
-    {
-      id: "b2b8fd48-53b2-4844-8c22-e79d5ef8f510",
-      name: "entrance",
-      color: "#45B7D1",
-    },
-    {
-      id: "3ffef781-0071-4052-8a9e-031fa8ea9526",
-      name: "general",
-      color: "#95A5A6",
-    },
-    {
-      id: "4f707789-b5a4-4969-8e7e-4de563d62d41",
-      name: "panoramic",
-      color: "#E74C3C",
-    },
-    {
-      id: "58370dbb-8008-46f9-9d03-72175742d56c",
-      name: "security",
-      color: "#FFEAA7",
-    },
-    {
-      id: "5ed5952d-8da0-441e-8b45-f05fafcdf1ed",
-      name: "indoor",
-      color: "#FF6B6B",
-    },
-    {
-      id: "922d3670-5db4-41e1-80cd-e75b0ce8e5b0",
-      name: "outdoor",
-      color: "#4ECDC4",
-    },
-    {
-      id: "3f0934dd-aa3d-4821-9069-4e1842e38f40",
-      name: "rooftop",
-      color: "#8E44AD",
-    },
-  ],
-  is_active: false,
-  status_message: "Connection timeout - check network",
-  snapshot: "https://picsum.photos/800/600?random=1",
-  created_at: "2025-06-04T20:12:40",
-  updated_at: "2025-06-13T18:44:21",
-};
 
-const CameraCard = () => {
+
+const CameraCard = ({cameraData}) => {
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleString();
   };
@@ -113,7 +62,7 @@ const CameraCard = () => {
             <Box sx={{ mb: 1}}>
               <Typography
                 variant="body2"
-                color="error.main"
+                color="primary.main"
                 sx={{ fontStyle: "italic", fontWeight: 500 }}
               >
                 Status: {cameraData.status_message}

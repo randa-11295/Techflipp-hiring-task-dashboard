@@ -52,7 +52,7 @@ const Cameras = () => {
                 gap={3}
               >
                 {data.items.map((camera) => (
-                  <CameraCard  key={camera.id} camera={camera} />
+                  <CameraCard  key={camera.id} cameraData={camera} />
                 ))}
               </Stack>
 
