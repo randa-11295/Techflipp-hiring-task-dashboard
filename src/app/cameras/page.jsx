@@ -70,7 +70,7 @@ const Cameras = () => {
         onSubmit={handleSearchSubmit}
         display="flex"
         flexDirection={{ xs: "column", sm: "row" }}
-        gap={2}
+        gap={1}
         alignItems="center"  
         mb={3}
       >
