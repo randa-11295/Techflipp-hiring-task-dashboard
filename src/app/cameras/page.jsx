@@ -28,7 +28,6 @@ const Cameras = () => {
   const [cameraName, setCameraName] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Query to fetch cameras
   const { data, isLoading, error } = useQuery({
     queryKey: ["cameras", page, size, searchQuery],
     queryFn: () => fetchCameras({ page, size, camera_name: searchQuery }),
