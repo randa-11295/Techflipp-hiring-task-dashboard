@@ -70,16 +70,17 @@ const Cameras = () => {
         display="flex"
         flexDirection={{ xs: "column", sm: "row" }}
         gap={1}
-        alignItems="center"  
+        alignItems="center"
         mb={3}
       >
-        <Box sx={{flexGrow : 1 , }}>
+        <Box sx={{ flexGrow: 1 }}>
           <InputLabel htmlFor="camera-search">Search</InputLabel>
           <FormControl sx={{ minWidth: "100%" }} variant="outlined">
             <OutlinedInput
               id="camera-search"
               value={cameraName}
               onChange={handleSearchChange}
+              onKeyDown={handleKeyPress}
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
@@ -95,9 +96,8 @@ const Cameras = () => {
           </FormControl>
         </Box>
 
-        <Box sx={{width : {xs : "100%" ,md: "30%"} }}>
+        <Box sx={{ width: { xs: "100%", md: "30%" } }}>
           <InputLabel htmlFor="page-size">Items per page</InputLabel>
-
           <TextField
             fullWidth
             variant="outlined"
@@ -114,6 +114,7 @@ const Cameras = () => {
           </TextField>
         </Box>
       </Box>
+
       {isLoading && (
         <Box display="flex" justifyContent="center" mt={4}>
           <CircularProgress />
@@ -141,7 +142,6 @@ const Cameras = () => {
                 ))}
               </Stack>
 
-              {/* Pagination */}
               <Box display="flex" justifyContent="center" mt={4}>
                 <Pagination
                   count={Math.ceil((data.total || 0) / size)}
